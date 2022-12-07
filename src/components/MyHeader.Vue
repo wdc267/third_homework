@@ -4,11 +4,9 @@
             <h1>hello wdc</h1>
             <div id="user_login">
                 <div class="demo-type">
-                    <div>
-                        <el-avatar :size="35"> user </el-avatar>
-                    </div>
+                    <el-avatar :size="35"> user </el-avatar>
+                    <a href="#">login in</a>
                 </div>
-                <a href="#">login in</a>
             </div>
         </div>
         <Menubar/>
@@ -28,7 +26,7 @@ export default {
 </script>
 
 <style scoped>
-    #header {
+#header {
         width: 100%;
         position: fixed;
         top: 0;
@@ -47,7 +45,13 @@ export default {
         float: right;
     }
     #user_login .demo-type{
-        float: left;
+        float: right;
+        vertical-align: middle;
     }
-    
+    #user_login .demo-type a:hover{
+        color:#409eff;
+    }
+    #user_login .demo-type a{
+        padding-left: 5px;
+    }
 </style>
