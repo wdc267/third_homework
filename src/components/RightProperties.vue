@@ -1,16 +1,23 @@
 <template>
 <div id="proper">
-    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="vertical" @select="handleSelect">
+    <el-menu 
+    :default-active="activeIndex" 
+    class="el-menu-demo" 
+    mode="vertical" 
+    @select="handleSelect">
         <el-sub-menu index="2">
-            <template #title>Workspace</template>
-            <el-menu-item index="2-1">item one</el-menu-item>
-            <el-menu-item index="2-2">item two</el-menu-item>
-            <el-menu-item index="2-3">item three</el-menu-item>
-            <el-sub-menu index="2-4">
-                <template #title>item four</template>
-                <el-menu-item index="2-4-1">item one</el-menu-item>
-                <el-menu-item index="2-4-2">item two</el-menu-item>
-                <el-menu-item index="2-4-3">item three</el-menu-item>
+            <template #title>Properties Panel</template>
+            <el-sub-menu index="2-1">
+                <template #title>Note Properties</template>
+                <el-menu-item index="2-1-1">create time</el-menu-item>
+                <el-menu-item index="2-1-2">update time</el-menu-item>
+                <el-menu-item index="2-1-3">tag</el-menu-item>
+                <el-menu-item index="2-1-4">writer</el-menu-item>
+            </el-sub-menu>
+            <el-sub-menu index="2-2">
+                <template #title>Cell Properties</template>
+                <el-menu-item index="2-2-1">index</el-menu-item>
+                <el-menu-item index="2-2-2">font size</el-menu-item>        
             </el-sub-menu>
         </el-sub-menu>
     </el-menu>

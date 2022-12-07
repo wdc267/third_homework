@@ -9,32 +9,25 @@
             <el-sub-menu index="1">
                 <template #title>
                     <el-icon>
-                        <location />
+                        <Notebook />
                     </el-icon>
-                    <span>Navigator One</span>
+                    <span>Note List</span>
                 </template>
                 <el-menu-item-group>
-                    <template #title><span>Group One</span></template>
-                    <el-menu-item index="1-1">item one</el-menu-item>
-                    <el-menu-item index="1-2">item two</el-menu-item>
+                    <template #title><input type="text" style="border: 1px solid black"></template>
+                    <el-menu-item index="1-1">note one</el-menu-item>
+                    <el-menu-item index="1-2">note two</el-menu-item>
                 </el-menu-item-group>
-                <el-menu-item-group title="Group Two">
-                    <el-menu-item index="1-3">item three</el-menu-item>
-                </el-menu-item-group>
-                <el-sub-menu index="1-4">
-                    <template #title><span>item four</span></template>
-                    <el-menu-item index="1-4-1">item one</el-menu-item>
-                </el-sub-menu>
             </el-sub-menu>
             <el-sub-menu index="2">
                 <template #title>
                     <el-icon>
                         <location />
                     </el-icon>
-                    <span>Navigator Two</span>
+                    <span>Tag List</span>
                 </template>
                 <el-menu-item-group>
-                    <template #title><span>Group One</span></template>
+                    <!-- <template #title><input type="text"></template> -->
                     <el-menu-item index="1-1">item one</el-menu-item>
                     <el-menu-item index="1-2">item two</el-menu-item>
                 </el-menu-item-group>

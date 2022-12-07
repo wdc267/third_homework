@@ -2,6 +2,11 @@
     <div id="menubar" class="w">
         <div class="dropdown">
             <a href="#">File</a>
+            <div class="dropdown-content">
+                <a href="#">New Notebook</a>
+                <a href="#">Open...</a>
+                <a href="#">Save as..</a>
+            </div>
         </div>
         <div class="dropdown">
             <a href="#">Edit</a>
@@ -12,12 +17,16 @@
         <div class="dropdown">
             <a href="#">Insert</a>
             <div class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
+                <a href="#">Insert Cell Above</a>
+                <a href="#">Insert Cell Below</a>
             </div>
         </div>
         <div class="dropdown">
             <a href="#">Setting</a>
+            <div class="dropdown-content">
+                <a href="#">Switch the theme</a>
+                <a href="#">font-size</a>
+            </div>
         </div>
         <div class="dropdown">
             <a href="#">Help</a>
@@ -59,7 +68,7 @@ export default {
        display: none;
        position: absolute;
        background-color: #f9f9f9;
-       min-width: 100px;
+       min-width: 160px;
        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
        z-index: 1;
    }
