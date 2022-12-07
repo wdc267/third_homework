@@ -1,40 +1,42 @@
 <template>
-    <div id="porperties">
-        <h1>笔记属性</h1>
-        <ul>
-            <li>创建日期：</li>
-            <li>更新日期：2022/10/5</li>
-            <li>tag：</li>
-            <li>作者：</li>
-        </ul>
-        <h1>cell属性</h1>
-        <ul>
-            <li>cell编号：0</li>
-        </ul>
-    </div>
+<div id="proper">
+    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="vertical" @select="handleSelect">
+        <el-sub-menu index="2">
+            <template #title>Workspace</template>
+            <el-menu-item index="2-1">item one</el-menu-item>
+            <el-menu-item index="2-2">item two</el-menu-item>
+            <el-menu-item index="2-3">item three</el-menu-item>
+            <el-sub-menu index="2-4">
+                <template #title>item four</template>
+                <el-menu-item index="2-4-1">item one</el-menu-item>
+                <el-menu-item index="2-4-2">item two</el-menu-item>
+                <el-menu-item index="2-4-3">item three</el-menu-item>
+            </el-sub-menu>
+        </el-sub-menu>
+    </el-menu>
+</div>
 </template>
 
 <script>
 export default {
-    name:'RightProperties',
+    name: 'RightProperties',
+    data() {
+        return {
+            activeIndex: '1',
+        };
+    },
+    methods: {
+        handleSelect(key, keyPath) {
+            console.log(key, keyPath);
+        }
+    }
 }
 </script>
 
 <style>
-    #porperties {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 150px;
-        font-size: 16px;
-        background-color: #ffffff;
-    }
-
-    #porperties h1 {
-        font-size: 20px;
-    }
-
-    #porperties li {
-        list-style: none;
-    }
+#proper {
+    position: fixed;
+    right: 0;
+    top: 120px;
+ }
 </style>

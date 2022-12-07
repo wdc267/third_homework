@@ -55,10 +55,6 @@ a {
   text-decoration: none
 }
 
-a:hover {
-  color: #c81623
-}
-
 button,
 input {
   /* "\5B8B\4F53" 就是宋体的意思 这样浏览器兼容性比较好 */
@@ -81,7 +77,7 @@ body {
 }
 /* 组件css部分 */
 .w {
-  width: 1000px;
+  width: 75%;
   margin: 0 auto;
 }
 
@@ -92,6 +88,7 @@ body {
 #main {
   position: relative;
   width: 100%;
+  height: 1000px;
   background-color: #eeeeee;
   border-top: 1px solid #e7e7e7;
   margin-top: 150px;

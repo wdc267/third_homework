@@ -1,59 +1,83 @@
 <template>
     <div id="slidebar">
-        <button class="btn iconfont">&#xe64a;</button>
-        <div class="menu">
-            <div class="menu-title">
-                <h1>文件</h1>
-            </div>
-            <div class="menu-content">
-                <p>text.txt</p>
-            </div>
-        </div>
+        <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
+            <el-radio-button :label="false">expand</el-radio-button>
+            <el-radio-button :label="true">collapse</el-radio-button>
+        </el-radio-group>
+        <el-menu default-active="2" class="el-menu-vertical-demo" :collapse="isCollapse" @open="handleOpen"
+            @close="handleClose">
+            <el-sub-menu index="1">
+                <template #title>
+                    <el-icon>
+                        <location />
+                    </el-icon>
+                    <span>Navigator One</span>
+                </template>
+                <el-menu-item-group>
+                    <template #title><span>Group One</span></template>
+                    <el-menu-item index="1-1">item one</el-menu-item>
+                    <el-menu-item index="1-2">item two</el-menu-item>
+                </el-menu-item-group>
+                <el-menu-item-group title="Group Two">
+                    <el-menu-item index="1-3">item three</el-menu-item>
+                </el-menu-item-group>
+                <el-sub-menu index="1-4">
+                    <template #title><span>item four</span></template>
+                    <el-menu-item index="1-4-1">item one</el-menu-item>
+                </el-sub-menu>
+            </el-sub-menu>
+            <el-sub-menu index="2">
+                <template #title>
+                    <el-icon>
+                        <location />
+                    </el-icon>
+                    <span>Navigator Two</span>
+                </template>
+                <el-menu-item-group>
+                    <template #title><span>Group One</span></template>
+                    <el-menu-item index="1-1">item one</el-menu-item>
+                    <el-menu-item index="1-2">item two</el-menu-item>
+                </el-menu-item-group>
+                <el-menu-item-group title="Group Two">
+                    <el-menu-item index="1-3">item three</el-menu-item>
+                </el-menu-item-group>
+                <el-sub-menu index="1-4">
+                    <template #title><span>item four</span></template>
+                    <el-menu-item index="1-4-1">item one</el-menu-item>
+                </el-sub-menu>
+            </el-sub-menu>
+        </el-menu>
     </div>
 </template>
 
 <script>
 export default {
-    name:'LeftSlidebar'
+    name: 'LeftSlidebar',
+    data() {
+        return {
+            isCollapse: true
+        };
+    },
+    methods: {
+        handleOpen(key, keyPath) {
+            console.log(key, keyPath);
+        },
+        handleClose(key, keyPath) {
+            console.log(key, keyPath);
+        }
+    }
 }
 </script>
 
-<style>
+<style scoped>
     #slidebar {
-        position: relative;
-        float: left;
-        width: 150px;
-        height: 500px;
-        font-size: 16px;
-        background-color: #ffffff;
+        position: fixed;
+        /* background-color: yellow; */
+        left: 0;
+        top: 120px;
     }
-
-    #slidebar .btn {
-        position: absolute;
-        top: 50%;
-        right: 0;
-        /* 分别向右向上走自身的一半 */
-        transform: translate(50%, -50%);
-        height: 30px;
-        width: 30px;
-        line-height: 30px;
-        background-color: skyblue;
-        border-radius: 50%;
-    }
-
-    #slidebar .menu-title h1 {
-        position: absolute;
-        top: 0;
-        width: 100%;
-        height: 20px;
-        line-height: 20px;
-        font-size: 20px;
-        color: #565656;
-        background-color: #ffffff;
-        text-align: center;
-    }
-
-    #slidebar .menu-content {
-        margin-top: 20px;
+    .el-menu-vertical-demo:not(.el-menu--collapse) {
+        width: 200px;
+        min-height: 400px;
     }
 </style>
