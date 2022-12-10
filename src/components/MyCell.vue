@@ -1,19 +1,48 @@
 <template>
-    <div id="current" class="cell">
-        <textarea class="textarea" placeholder="hello"></textarea>
+    <div class="cells" 
+    :class ="{ current: cell.iscurrent, focus: cell.isfocus}"
+    @click="setCurrent(cell.index)">
+        <textarea class="textarea" placeholder="" v-model="cell.text" @focus="setFocus(cell.index)" @click.stop></textarea>
     </div>
 </template>
 
 <script>
+import { sortedIndex } from "lodash";
+import { useStore } from "vuex";
 export default {
-    name:'MyCell'
+    name: 'MyCell',
+    props: ['cell'], //父组件向子组件传递cell相应数据
+    setup() {
+        const store = useStore();
+        function setFocus (i) {
+            store.state.cells.forEach(function (cell) {
+                cell.isfocus = false
+                cell.iscurrent = false
+            })
+            console.log(i);
+            store.state.cells[i].isfocus = true
+        }
+        function setCurrent(i) {
+            // console.log(event.target);
+            store.state.cells.forEach(function (cell) {
+                cell.isfocus = false
+                cell.iscurrent = false
+            })
+            console.log(i);
+            store.state.cells[i].iscurrent = true
+        }
+        return {
+            setFocus,
+            setCurrent
+        }
+    }
 }
 </script>
 
 <style scoped>
-div .cell{
+.cells{
     width: 90%;
-    margin: auto;
+    margin: 20px auto;
     padding: 5px 25px;
     font-size: 20px;
     color: black;
@@ -22,9 +51,13 @@ div .cell{
     border-left: 5px solid transparent;
 }
 
-div #current {
+.current {
     border: 1px solid #409eff;
     border-left: 5px solid #409eff;
+}
+.focus {
+    border: 1px solid orange;
+    border-left: 5px solid orange;
 }
 textarea {
     width: 100%;

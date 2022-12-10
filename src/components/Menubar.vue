@@ -17,8 +17,8 @@
         <div class="dropdown">
             <a href="#">Insert</a>
             <div class="dropdown-content">
-                <a href="#">Insert Cell Above</a>
-                <a href="#">Insert Cell Below</a>
+                <a href="#" @click="insertCell($store.getters.nowIndex)">Insert Cell Above</a>
+                <a href="#" @click="insertCell($store.getters.nowIndex+1)">Insert Cell Below</a>
             </div>
         </div>
         <div class="dropdown">
@@ -35,8 +35,18 @@
 </template>
 
 <script>
+// import { useStore } from "vuex";
+import emitter from "../utils/eventbus.js";// 导入事件总线
 export default {
-    name:'Menubar'
+    name: 'Menubar',
+    setup() {
+        function insertCell(id){
+            emitter.emit('insert', id);
+        };
+        return {
+            insertCell
+        }
+    }
 }
 </script>
 

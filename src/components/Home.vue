@@ -20,12 +20,55 @@ import MyHeader from './MyHeader.vue'
 import LeftSlidebar from './LeftSlidebar.vue'
 import NoteContent from './NoteContent.vue'
 import RightProperties from './RightProperties.vue'
-
+import { useStore } from "vuex";
 export default {
   name: 'Home',
   components: {
     MyHeader,LeftSlidebar,NoteContent,RightProperties
+  },
+  setup() {
+    const store = useStore();
+    function handleUp(event) {
+      console.log(event);
+      if(event.key === 'ArrowUp')
+      for (let i = 1; i < store.state.cells.length; i++) {
+        if (store.state.cells[i].iscurrent === true) {
+            store.state.cells[i].iscurrent = false;
+            store.state.cells[i - 1].iscurrent = true;
+            break;
+          }
+          if (store.state.cells[i].isfocus === true) {
+            store.state.cells[i].isfocus = false;
+            store.state.cells[i - 1].isfocus = true;
+            break;
+          }
+        }
+      else if (event.key === 'ArrowDown')
+      for (let i = 0; i < store.state.cells.length - 1; i++) {
+        if (store.state.cells[i].iscurrent === true) {
+            store.state.cells[i].iscurrent = false;
+            store.state.cells[i + 1].iscurrent = true;
+            break;
+          }
+          if (store.state.cells[i].isfocus === true) {
+            store.state.cells[i].isfocus = false;
+            store.state.cells[i + 1].isfocus = true;
+            break;
+          }
+      }
+
+    }
+    return {
+      handleUp,
+    }
+  },
+  mounted() {
+    document.addEventListener('keyup', this.handleUp)
+  },
+  beforeDestory() {
+    window.removeEventListener('keyup', this.handleUp)
   }
+  
 }
 </script>
 
@@ -84,7 +127,10 @@ body {
 body {
   background-color: #eeeeee;
 }
-
+.el-sub-menu__title,
+.el-menu-item {
+  height: 30px !important;
+}
 #main {
   position: relative;
   width: 100%;

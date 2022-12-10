@@ -5,19 +5,19 @@
     class="el-menu-demo" 
     mode="vertical" 
     @select="handleSelect">
-        <el-sub-menu index="2">
+        <el-sub-menu index="1">
             <template #title>Properties Panel</template>
-            <el-sub-menu index="2-1">
+            <el-sub-menu index="1-1">
                 <template #title>Note Properties</template>
-                <el-menu-item index="2-1-1">create time</el-menu-item>
-                <el-menu-item index="2-1-2">update time</el-menu-item>
-                <el-menu-item index="2-1-3">tag</el-menu-item>
-                <el-menu-item index="2-1-4">writer</el-menu-item>
+                <el-menu-item index="1-1-1">create time</el-menu-item>
+                <el-menu-item index="1-1-2">update time</el-menu-item>
+                <el-menu-item index="1-1-3">tag</el-menu-item>
+                <el-menu-item index="1-1-4">writer</el-menu-item>
             </el-sub-menu>
-            <el-sub-menu index="2-2">
+            <el-sub-menu index="1-2">
                 <template #title>Cell Properties</template>
-                <el-menu-item index="2-2-1">index</el-menu-item>
-                <el-menu-item index="2-2-2">font size</el-menu-item>        
+                <el-menu-item index="1-2-1">index</el-menu-item>
+                <el-menu-item index="1-2-2">font size</el-menu-item>        
             </el-sub-menu>
         </el-sub-menu>
     </el-menu>
@@ -25,22 +25,22 @@
 </template>
 
 <script>
+import {ref} from 'vue'
 export default {
     name: 'RightProperties',
-    data() {
-        return {
-            activeIndex: '1',
-        };
-    },
-    methods: {
-        handleSelect(key, keyPath) {
+    setup() {
+        let activeIndex = ref('1')
+        function handleSelect(key, keyPath) {
             console.log(key, keyPath);
+        }
+        return {
+            activeIndex, handleSelect
         }
     }
 }
 </script>
 
-<style>
+<style scoped>
 #proper {
     position: fixed;
     right: 0;

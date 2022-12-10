@@ -15,8 +15,8 @@
                 </template>
                 <el-menu-item-group>
                     <template #title><input type="text" style="border: 1px solid black"></template>
-                    <el-menu-item index="1-1">note one</el-menu-item>
-                    <el-menu-item index="1-2">note two</el-menu-item>
+                    <el-menu-item index="1-2">note one</el-menu-item>
+                    <el-menu-item index="1-3">note two</el-menu-item>
                 </el-menu-item-group>
             </el-sub-menu>
             <el-sub-menu index="2">
@@ -27,16 +27,15 @@
                     <span>Tag List</span>
                 </template>
                 <el-menu-item-group>
-                    <!-- <template #title><input type="text"></template> -->
-                    <el-menu-item index="1-1">item one</el-menu-item>
-                    <el-menu-item index="1-2">item two</el-menu-item>
+                    <el-menu-item index="2-1">item one</el-menu-item>
+                    <el-menu-item index="2-2">item two</el-menu-item>
                 </el-menu-item-group>
                 <el-menu-item-group title="Group Two">
-                    <el-menu-item index="1-3">item three</el-menu-item>
+                    <el-menu-item index="2-3">item three</el-menu-item>
                 </el-menu-item-group>
-                <el-sub-menu index="1-4">
+                <el-sub-menu index="2-4">
                     <template #title><span>item four</span></template>
-                    <el-menu-item index="1-4-1">item one</el-menu-item>
+                    <el-menu-item index="2-4-1">item one</el-menu-item>
                 </el-sub-menu>
             </el-sub-menu>
         </el-menu>
@@ -44,19 +43,21 @@
 </template>
 
 <script>
+import {ref} from 'vue'
 export default {
     name: 'LeftSlidebar',
-    data() {
+    setup() {
+        let isCollapse = ref(true)
+        function handleOpen(key, keyPath){
+            console.log(key, keyPath);
+        }
+        function handleClose(key, keyPath) {
+            console.log(key, keyPath);
+        }
         return {
-            isCollapse: true
-        };
-    },
-    methods: {
-        handleOpen(key, keyPath) {
-            console.log(key, keyPath);
-        },
-        handleClose(key, keyPath) {
-            console.log(key, keyPath);
+            isCollapse,
+            handleOpen,
+            handleClose
         }
     }
 }
@@ -69,7 +70,7 @@ export default {
         left: 0;
         top: 120px;
     }
-    .el-menu-vertical-demo:not(.el-menu--collapse) {
+   .el-menu-vertical-demo:not(.el-menu--collapse) {
         width: 200px;
         min-height: 400px;
     }
