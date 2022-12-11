@@ -1,10 +1,10 @@
 <template>
     <div id="user_info" class="w">
-        <h1>hello wdc</h1>
+        <h1>hello user</h1>
         <div id="user_login">
             <div class="demo-type">
                 <el-avatar :size="35"> user </el-avatar>
-                <router-link to="/Register"><a href="#">login</a></router-link>
+                <router-link to="/Register"><a href="#">log in</a></router-link>
             </div>
         </div>
     </div>

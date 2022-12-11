@@ -14,7 +14,7 @@
                     <span>Note List</span>
                 </template>
                 <el-menu-item-group>
-                    <template #title><input type="text" style="border: 1px solid black"></template>
+                    <template #title>notes</template>
                     <el-menu-item index="1-2">note one</el-menu-item>
                     <el-menu-item index="1-3">note two</el-menu-item>
                 </el-menu-item-group>

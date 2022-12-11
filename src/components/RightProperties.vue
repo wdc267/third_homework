@@ -16,7 +16,7 @@
             </el-sub-menu>
             <el-sub-menu index="1-2">
                 <template #title>Cell Properties</template>
-                <el-menu-item index="1-2-1">index</el-menu-item>
+                <el-menu-item index="1-2-1">index：{{ $store.getters.nowIndex }}</el-menu-item>
                 <el-menu-item index="1-2-2">font size</el-menu-item>        
             </el-sub-menu>
         </el-sub-menu>

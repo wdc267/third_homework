@@ -37,11 +37,6 @@ export default {
             store.state.cells[i - 1].iscurrent = true;
             break;
           }
-          // if (store.state.cells[i].isfocus === true) {
-          //   store.state.cells[i].isfocus = false;
-          //   store.state.cells[i - 1].isfocus = true;
-          //   break;
-          // }
         }
       else if (event.key === 'ArrowDown')
       for (let i = 0; i < store.state.cells.length - 1; i++) {
@@ -50,11 +45,6 @@ export default {
             store.state.cells[i + 1].iscurrent = true;
             break;
           }
-          // if (store.state.cells[i].isfocus === true) {
-          //   store.state.cells[i].isfocus = false;
-          //   store.state.cells[i + 1].isfocus = true;
-          //   break;
-          // }
         } 
       else if (event.key === 'm') {
         for (let i = 0; i < store.state.cells.length ; i++) {
