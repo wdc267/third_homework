@@ -17,8 +17,8 @@
         <div class="dropdown">
             <a href="#">Insert</a>
             <div class="dropdown-content">
-                <a href="#" @click="insertCell($store.getters.nowIndex)">Insert Cell Above</a>
-                <a href="#" @click="insertCell($store.getters.nowIndex+1)">Insert Cell Below</a>
+                <a href="#" @click="insertCell($store.getters.nowIndex-1)">Insert Cell Above</a>
+                <a href="#" @click="insertCell($store.getters.nowIndex)">Insert Cell Below</a>
             </div>
         </div>
         <div class="dropdown">

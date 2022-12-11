@@ -29,7 +29,7 @@ export default {
   setup() {
     const store = useStore();
     function handleUp(event) {
-      console.log(event);
+      // console.log(event);
       if(event.key === 'ArrowUp')
       for (let i = 1; i < store.state.cells.length; i++) {
         if (store.state.cells[i].iscurrent === true) {
@@ -37,11 +37,11 @@ export default {
             store.state.cells[i - 1].iscurrent = true;
             break;
           }
-          if (store.state.cells[i].isfocus === true) {
-            store.state.cells[i].isfocus = false;
-            store.state.cells[i - 1].isfocus = true;
-            break;
-          }
+          // if (store.state.cells[i].isfocus === true) {
+          //   store.state.cells[i].isfocus = false;
+          //   store.state.cells[i - 1].isfocus = true;
+          //   break;
+          // }
         }
       else if (event.key === 'ArrowDown')
       for (let i = 0; i < store.state.cells.length - 1; i++) {
@@ -50,13 +50,22 @@ export default {
             store.state.cells[i + 1].iscurrent = true;
             break;
           }
-          if (store.state.cells[i].isfocus === true) {
-            store.state.cells[i].isfocus = false;
-            store.state.cells[i + 1].isfocus = true;
+          // if (store.state.cells[i].isfocus === true) {
+          //   store.state.cells[i].isfocus = false;
+          //   store.state.cells[i + 1].isfocus = true;
+          //   break;
+          // }
+        } 
+      else if (event.key === 'm') {
+        for (let i = 0; i < store.state.cells.length ; i++) {
+          if (store.state.cells[i].iscurrent === true) {
+            console.log(store.state.cells[i].ismarked);
+            store.state.cells[i].ismarked = !store.state.cells[i].ismarked;
+            console.log(store.state.cells[i].ismarked);
             break;
           }
+        }
       }
-
     }
     return {
       handleUp,

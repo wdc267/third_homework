@@ -2,13 +2,21 @@
     <div class="cells" 
     :class ="{ current: cell.iscurrent, focus: cell.isfocus}"
     @click="setCurrent(cell.index)">
-        <textarea class="textarea" placeholder="" v-model="cell.text" @focus="setFocus(cell.index)" @click.stop></textarea>
+        <textarea 
+        class="textarea" 
+        placeholder="" 
+        v-model="cell.text" 
+        @focus="setFocus(cell.index)" 
+        @click.stop
+        v-show="!cell.ismarked">
+        </textarea>
+        <div v-show="cell.ismarked" v-html="markdown(cell.text)"></div>
     </div>
 </template>
 
 <script>
-import { sortedIndex } from "lodash";
 import { useStore } from "vuex";
+import MarkdownIt from 'markdown-it';
 export default {
     name: 'MyCell',
     props: ['cell'], //父组件向子组件传递cell相应数据
@@ -19,21 +27,24 @@ export default {
                 cell.isfocus = false
                 cell.iscurrent = false
             })
-            console.log(i);
             store.state.cells[i].isfocus = true
         }
         function setCurrent(i) {
-            // console.log(event.target);
             store.state.cells.forEach(function (cell) {
                 cell.isfocus = false
                 cell.iscurrent = false
             })
-            console.log(i);
             store.state.cells[i].iscurrent = true
+        }
+        function markdown(text) {
+            const md = new MarkdownIt();
+            const result = md.render(text)
+            return result
         }
         return {
             setFocus,
-            setCurrent
+            setCurrent,
+            markdown,
         }
     }
 }

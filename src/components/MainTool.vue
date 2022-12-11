@@ -11,7 +11,6 @@
 
 <script>
 import { nanoid } from 'nanoid'
-// import { ref } from 'vue'
 import { useStore } from "vuex";
 import emitter from "../utils/eventbus.js";// 导入事件总线
 export default {
@@ -25,13 +24,26 @@ export default {
         }
         function addCell(a) {
             // 创建cell并添加
-            const cell = { id: nanoid(), index: -1, text:'', iscurrent: false, isfocus: false }
+            const cell = { id: nanoid(), index: -1, text:'', iscurrent: false, isfocus: false, ismarked: false }
             store.state.cells.splice(a + 1, 0, cell);
             changeIndex();
+            // 判断是否只有一个元素，若是修改iscurrent为true
+            if (store.state.cells.length == 1) {
+                store.state.cells[0].iscurrent = true
+            }
         }
         function delCell(a) {
             store.state.cells.splice(a, 1);
             changeIndex();
+            // 当iscurrent为true的元素位于最底部时将该元素删除，将修改后位于最底部元素的iscurrent修改为true
+            if(a == store.state.cells.length ) {
+                if(a-1>=0)
+                store.state.cells[a - 1].iscurrent = true;
+            }
+            // 当iscurrent为true的元素不位于最底部时将该元素删除，将修改前下一个元素的iscurrent修改为true
+            else {
+                store.state.cells[a].iscurrent = true;   
+            }
         }
         function moveUp(a) {
             if (a - 1 >= 0) {
