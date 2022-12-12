@@ -91,14 +91,7 @@ export default {
             password: '',
         })
         function register() {
-            console.log(registrant);
-            let host = 'https://db-api.amarea.cn'
-            let key = 'users'
-            let requestOptions = {
-                method: "POST",
-                headers: myHeaders,
-                redirect: "follow",
-            }
+            // console.log(registrant);
             let name = registrant.username;
             let pwd = registrant.password;
             let id = registrant.userId;
@@ -106,25 +99,39 @@ export default {
             let nickname= registrant.nickname;
             let phone = registrant.phone;
             let email = registrant.email;
-            requestOptions.body = JSON.stringify({
-                id: id, name: name, password: pwd, sex: sex, nickname: nickname,
-                phone: phone, email:email, // 初始化一个空的待办清单
-            });
-            fetch(`${host}/${key}`, requestOptions) // 这里的网址没有id
-                .then(response => {
-                    if (response.status == 500) {
-                        alert('用户id重复，注册失败')
-                    }
-                    else return response.json()
+            if (name == '' || pwd == '' || id == ''||pwd=='') {
+                alert('输入信息不完整')
+            } else if (pwd != registrant.confirmPassword) {
+                alert('输入密码前后不一致')
+            } else {
+                let host = 'https://db-api.amarea.cn'
+                let key = 'users'
+                let requestOptions = {
+                    method: "POST",
+                    headers: myHeaders,
+                    redirect: "follow",
                 }
-                )
-                .then(data => {
-                    console.log(data.id + "注册成功")
-                    alert('注册成功')
-                })  //新创建后的数据的id
-                .catch(err => {
-                    console.log(err)
-                })
+                requestOptions.body = JSON.stringify({
+                    id: id, name: name, password: pwd, sex: sex, nickname: nickname,
+                    phone: phone, email: email, // 初始化一个空的待办清单
+                });
+                fetch(`${host}/${key}`, requestOptions) // 这里的网址没有id
+                    .then(response => {
+                        if (response.status == 500) {
+                            alert('用户id重复，注册失败')
+                        }
+                        else return response.json()
+                    }
+                    )
+                    .then(data => {
+                        console.log(data.id + "注册成功")
+                        alert('注册成功')
+                    })  //新创建后的数据的id
+                    .catch(err => {
+                        console.log(err)
+                    })
+
+            }
         }
         function login() {
             console.log(loginUser);
