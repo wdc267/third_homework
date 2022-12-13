@@ -2,14 +2,17 @@
     <div class="cells" 
     :class ="{ current: cell.iscurrent, focus: cell.isfocus}"
     @click="setCurrent(cell.index)">
-        <textarea 
-        class="textarea" 
-        placeholder="" 
+        <el-input 
+        type="textarea" 
+        placeholder=""
+        outline = "none" 
+        resize = "none"
         v-model="cell.text" 
         @focus="setFocus(cell.index)" 
         @click.stop
-        v-show="!cell.ismarked">
-        </textarea>
+        v-show="!cell.ismarked"
+         :autosize="{ minRows: 2}">
+        </el-input>
         <div v-show="cell.ismarked" v-html="markdown(cell.text)"></div>
     </div>
 </template>
@@ -41,12 +44,16 @@ export default {
             const result = md.render(text)
             return result
         }
+        function autoHeight(e) {
+            return e.target.scrollHeight + 'px';
+        }
         return {
             setFocus,
             setCurrent,
             markdown,
+            autoHeight
         }
-    }
+    },
 }
 </script>
 
@@ -70,16 +77,7 @@ export default {
     border: 1px solid orange;
     border-left: 5px solid orange;
 }
-textarea {
-    width: 100%;
-    min-height: 30px;
-    margin: 0 auto;
-    padding: 0;
-    font-size: 20px;
-    resize: none;
-    outline: none;
-    background-color: #f7f7f7;
-    border: 1px solid #e7e7e7;
-    overflow-y: hidden;
+.el-textarea {
+    --el-input-focus-border-color: #dcdfe6;
 }
 </style>

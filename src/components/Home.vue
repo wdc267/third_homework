@@ -65,7 +65,7 @@ export default {
     document.addEventListener('keyup', this.handleUp)
   },
   beforeDestory() {
-    window.removeEventListener('keyup', this.handleUp)
+    document.removeEventListener('keyup', this.handleUp)
   }
   
 }

@@ -64,9 +64,11 @@
 <script>
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router';
+import { useStore } from "vuex";
 export default {
     name: 'Register',
     setup() {
+        const store = useStore();
         const router = useRouter();
         const myHeaders = new Headers()
         myHeaders.append("Content-Type", "application/json")
@@ -150,6 +152,8 @@ export default {
                     if (data.id === id) {
                         if (data.password === password) {
                             console.log(data.name + '登录成功')
+                            store.state.user.name = data.name
+                            store.state.user.islogin = true
                             router.push('/Home');
                         } else {
                             throw new Error("密码不正确")

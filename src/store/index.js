@@ -5,6 +5,10 @@ import { createStore } from 'vuex'
 export default createStore({
     state: {
         title: 'note title',
+        user: {
+            name: '',
+            islogin: false,
+        },
         cells:[
             { id: '001', index: 0, text: '吃饭', iscurrent: true, isfocus: false , ismarked: false},
             { id: '002', index: 1, text: '睡觉', iscurrent: false, isfocus: false , ismarked: false},

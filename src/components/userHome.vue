@@ -1,9 +1,11 @@
 <template>
     <div id="user_info" class="w">
-        <h1>hello user</h1>
+        <h1 v-if="$store.state.user.islogin">hello {{$store.state.user.name}}</h1>
+        <h1 v-else>hello user</h1>
         <div id="user_login">
             <div class="demo-type">
-                <el-avatar :size="35"> user </el-avatar>
+                <el-avatar :size="35" v-if="$store.state.user.islogin"> {{$store.state.user.name}} </el-avatar>
+                <el-avatar :size="35" v-else> user </el-avatar>
                 <router-link to="/Register"><a href="#">log in</a></router-link>
             </div>
         </div>
