@@ -215,7 +215,7 @@ body,
     }
 
     .tabcontent {
-        height: 320px;
+        height: 330px;
         padding: 6px 12px;
         border: 1px solid #a0cfff;
         border-top: none;

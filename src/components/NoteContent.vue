@@ -16,16 +16,6 @@ import {reactive} from 'vue'
 export default {
     name: 'NoteContent',
     components: { MyCell },
-    // setup(){
-    //     let cells = reactive(
-    //         $store.state.cells
-    //     );
-
-    //     return {
-    //         cells
-    //     }
-    // }
-    
 }
 </script>
 
